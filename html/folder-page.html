@@ -37,40 +37,54 @@
 
             <!-- Контейнер для карточек папок -->
             <div class="folders-grid">
-            <!-- Карточка папки -->
-            <div class="folder-card">
-                <img src="/img/Folder.svg" alt="">
-                <div class="folder-text">
-                    <h3>Новая папка</h3>
-                    <p>10 файлов</p>
+                <!-- Карточка папки -->
+                <div class="folder-card">
+                    <img src="/img/Folder.svg" alt="">
+                    <div class="folder-text">
+                        <h3>Новая папка</h3>
+                        <p>10 файлов</p>
+                    </div>
                 </div>
-            </div>
-            <div class="folder-card">
-                <img src="/img/Folder.svg" alt="">
-                <div class="folder-text">
-                    <h3>Новая папка</h3>
-                    <p>10 файлов</p>
+                <div class="folder-card">
+                    <img src="/img/Folder.svg" alt="">
+                    <div class="folder-text">
+                        <h3>Новая папка</h3>
+                        <p>10 файлов</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="folder-card">
-                <img src="/img/Folder.svg" alt="">
-                <div class="folder-text">
-                    <h3>Новая папка</h3>
-                    <p>10 файлов</p>
+                <div class="folder-card">
+                    <img src="/img/Folder.svg" alt="">
+                    <div class="folder-text">
+                        <h3>Новая папка</h3>
+                        <p>10 файлов</p>
+                    </div>
                 </div>
-            </div>
-            <div class="folder-card">
-                <img src="/img/Folder.svg" alt="">
-                <div class="folder-text">
-                    <h3>Новая папка</h3>
-                    <p>10 файлов</p>
+                <div class="folder-card">
+                    <img src="/img/Folder.svg" alt="">
+                    <div class="folder-text">
+                        <h3>Новая папка</h3>
+                        <p>10 файлов</p>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Добавляем остальные карточки по аналогии -->
+                <!-- Кнопка должна быть видна админу -->
+                <button id="OpenModalBtn" class="download-btn">
+                    <img src="/img/PlusWhite.svg" alt="">Добавить папку
+                </button>
             </div>
         </main>
     </div>
-    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 class="title">Создание папки</h2>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label class="label">Название</label>
+                    <input type="text" placeholder="Введите название папки" class="input">
+                </div>
+                <button class="btn save">Создать</button>
+            </div>
+        </div>
+    </div>
 </body>
