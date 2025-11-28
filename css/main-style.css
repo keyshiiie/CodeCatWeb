@@ -1,0 +1,159 @@
+/* Общие стили */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #1B2431;
+  color: #fff;
+}
+
+/* Верхняя панель */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #323D4E;
+  border-bottom: 1px solid #323D4E;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4880FF;
+}
+
+.logo-span {
+    color: #fff;
+}
+
+.search-container {
+  flex: 1;
+  margin: 0 30px;
+}
+
+.search-input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #323D4E;
+  font-size: 16px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Основной контент */
+main {
+  padding: 30px;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 24px;
+}
+
+/* Фильтры */
+.filters-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: #273142;
+  border: 1px solid #313D4F;
+  border-radius: 14px;
+}
+
+.filter-select {
+  padding: 16px 25px;
+  margin-right: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: inherit;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.download-btn {
+  font-weight: 800;
+  padding: 18px;
+  background-color: #4880FF;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+/* Таблица с файлами */
+.files-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+}
+.table-header {
+    border-radius: 20px 20px 0 0;
+}
+
+.files-table th,
+.files-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 0.4px solid #979797;
+}
+
+.files-table th {
+  background-color: #313D4F;
+  font-weight: bold;
+}
+
+.files-table td {
+  background-color: #273142;
+}
+
+.file-checkbox {
+  margin-right: 10px;
+}
+
+/* Пагинация */
+#pageInfo {
+  margin-bottom: 15px;
+  color: #888;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.prev-btn,
+.next-btn {
+  padding: 10px 15px;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.page-numbers {
+  margin: 0 10px;
+}
