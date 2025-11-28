@@ -6,6 +6,7 @@
     <title>Все файлы</title>
     <link rel="stylesheet" href="/css/main-style.css">
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/menu-style.css">
 </head>
 <body>
     <header class="header">
@@ -14,7 +15,7 @@
             <input type="text" placeholder="Поиск" class="search-input">
         </div>
         <div class="user-profile">
-            <img src="avatar.png" alt="Аватар пользователя" class="avatar">
+            <img src="/img/UserIcon.svg" alt="Аватар пользователя" class="avatar">
             <div class="user-info-row">
                 <p class="user-info">ФИО</p>
                 <p class="user-info">Роль</p>
@@ -28,6 +29,7 @@
             <ul class="icon-list">
                 <li><a href="#" class="active"><img src="/img/Files.svg" alt=""></a></li>
                 <li><a href="#"><img src="/img/Folders.svg" alt=""></a></li>
+                <li><a href="/html/login-page.html"><img src="/img/ArrowSquareLeft.svg" alt=""></a></li>
             </ul>
         </aside>
 
@@ -57,6 +59,11 @@
                     <img src="/img/Folder_Download.svg" alt="Скачать">
                     Скачать
                 </button>
+            </div>
+
+            <div class="no-files-message" style="display: none;">
+                <h1 class="title">Файлов пока нет</h1>
+                <label>Администратор ещё не добавил файлы</label>
             </div>
 
             <table class="files-table">
@@ -93,10 +100,30 @@
 
                 <!-- Кнопка должна быть видна админу -->
                 <div id="no-records-container" class="no-records-container">
-                    <button class="open-modal-btn">
-                        <img src="/img/Plus.svg" alt="">Добавить запись
+                    <button id="OpenModalBtn" class="open-modal-btn">
+                        <img src="/img/Plus.svg" alt="">Добавить файл
                     </button>
                 </div>
+
+
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    document.getElementById('OpenModalBtn').addEventListener('click', function() {
+                    event.preventDefault(); // предотвращаем отправку формы
+
+                    const modal = document.getElementById('MyModal');
+                    modal.style.display = "block"; // Делаем модальное окно видимым
+                    });
+
+                    // Закрытие модального окна при клике вне его области
+                    window.addEventListener('click', function(event) {
+                    const modal = document.getElementById('MyModal');
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                    });
+                </script>
 
                 <!-- Пагинация -->
                 <div class="pagination-row">
@@ -112,30 +139,40 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <h2 class="title">Добавление файла</h2>
-            <div class="input-group">
-                <label class="label">Название</label>
-                <input type="text" placeholder="Введите название файла" class="input">
+
+            <div class="form-grid">
+                <div class="grid-column">
+                    <div class="input-group">
+                        <label class="label">Название</label>
+                        <input type="text" placeholder="Введите название файла" class="input">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Отправитель</label>
+                        <select class="input combo-box">
+                            <option>Выберите отправителя</option>
+                        </select>
+                    </div>
+                    <button class="btn add-file"><img src="/img/UploadSimple.svg" alt=""> Добавить файл</button>
+                </div>
+
+                <div class="grid-column">
+                    <div class="input-group">
+                        <label class="label">Тип документа</label>
+                        <select class="input combo-box">
+                            <option>Выберите тип</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Формат файла</label>
+                        <input type="text" placeholder="Выбирается автоматически" disabled class="input">
+                    </div>
+                    <button class="btn save">Сохранить</button>
+                </div>
             </div>
-            <div class="input-group">
-                <label class="label">Тип документа</label>
-                <select>
-                    <option>Выберите тип</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label class="label">Отправитель</label>
-                <select>
-                    <option>Выберите отправителя</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label class="label">Формат файла</label>
-                <input type="text" placeholder="Выбирается автоматически" disabled>
-            </div>
-            <button class="btn add-file">Добавить файл</button>
-            <button class="btn save">Сохранить</button>
         </div>
     </div>
+
+
 
     <script>
         const searchInput = document.getElementById('searchInput');
@@ -187,9 +224,72 @@
         });
     </script>
     <script>
+    function updateTableVisibility() {
+        const table = document.querySelector('.files-table');
+        const tbody = document.getElementById('files-tbody');
+        const noFilesMessage = document.querySelector('.no-files-message');
+
+        // Проверяем, есть ли строки в tbody
+        const hasRows = tbody.querySelectorAll('tr').length > 0;
+
+
+        if (hasRows) {
+        // Если есть строки — показываем таблицу, скрываем сообщение
+        table.style.display = 'table';
+        noFilesMessage.style.display = 'none';
+        } else {
+        // Если нет строк — скрываем таблицу, показываем сообщение
+        table.style.display = 'none';
+        noFilesMessage.style.display = 'block';
+        }
+    }
+
+    // Вызываем функцию при загрузке страницы
+    document.addEventListener('DOMContentLoaded', updateTableVisibility);
+
+    // Если вы динамически добавляете/удаляете строки, вызывайте updateTableVisibility() после изменений
+    // Например:
+    //   addRowToTable(); // ваша функция добавления строки
+    //   updateTableVisibility(); // обновляем видимость
+    </script>
+
+    <script>
         let login = localStorage.getItem('login');
         let span = document.getElementById('loginSpan');
         span.textContent = login;
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById('SaveThisFile').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение кнопки
+            document.getElementById('fileInput').click(); // Кликаем на скрытый input file
+
+
+
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById('AddNewFile').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение кнопки
+            document.getElementById('fileInput').click(); // Кликаем на скрытый input file
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function() {
+            // Здесь можно обработать выбранный файл, например, отправить на сервер
+            let file = this.files[0];
+
+            if (file) {
+                let fileName = file.name;
+                let fileExtension = '.' + fileName.split('.').pop(); // Получаем расширение файла, добавляем точку в начале
+                let fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.')); // Обрезаем расширение
+                document.getElementById('DocType').value = fileExtension;
+                document.getElementById('DocName').value = fileNameWithoutExtension;
+            } else {
+                document.getElementById('DocType').value = 'Ошибка загрузки'; // Очищаем поле, если файл не выбран
+            }
+            // Дальнейшая обработка файла (загрузка на сервер и т.д.)
+        });
     </script>
 </body>
 </html>
