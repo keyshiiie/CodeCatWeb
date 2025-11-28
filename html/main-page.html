@@ -16,8 +16,8 @@
         <div class="user-profile">
             <img src="avatar.png" alt="Аватар пользователя" class="avatar">
             <div class="user-info-row">
-            <p class="user-info">ФИО</p>
-            <p class="user-info">Роль</p>
+                <p class="user-info">ФИО</p>
+                <p class="user-info">Роль</p>
             </div>
         </div>
         </header>
@@ -115,24 +115,24 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Добавление файла</h2>
-            <div class="form-group">
-                <label>Название</label>
-                <input type="text" placeholder="Введите название файла">
+            <div class="input-group">
+                <label class="label">Название</label>
+                <input type="text" placeholder="Введите название файла" class="input">
             </div>
-            <div class="form-group">
-                <label>Тип документа</label>
+            <div class="input-group">
+                <label class="label">Тип документа</label>
                 <select>
                     <option>Выберите тип</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>Отправитель</label>
+            <div class="input-group">
+                <label class="label">Отправитель</label>
                 <select>
                     <option>Выберите отправителя</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>Формат файла</label>
+            <div class="input-group">
+                <label class="label">Формат файла</label>
                 <input type="text" placeholder="Выбирается автоматически" disabled>
             </div>
             <button class="btn add-file">Добавить файл</button>
@@ -140,5 +140,59 @@
         </div>
     </div>
 
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), delay);
+            }
+        }
+
+        function fetchData(query) {
+            // Отправляем запрос к API C#
+            fetch(`/api/document?query=${query}`) // Замените на ваш URL
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    searchResults.innerHTML = <p>Ошибка при выполнении запроса.</p>;
+                });
+        }
+
+        function displayResults(results) {
+            searchResults.innerHTML = ''; // Очищаем предыдущие результаты
+            if (results.length === 0) {
+                searchResults.innerHTML = <p>Ничего не найдено.</p>;
+                return;
+            }
+
+            const ul = document.createElement('ul');
+            results.forEach(result => {
+                const li = document.createElement('li');
+                li.textContent = result.title; // Предполагается, что у вас есть поле title
+                ul.appendChild(li);
+            });
+            searchResults.appendChild(ul);
+        }
+
+        const delayedFetchData = debounce(fetchData, 300); // Задержка 300мс
+
+        searchInput.addEventListener('input', function(event) {
+            const query = event.target.value;
+            delayedFetchData(query);
+        });
+    </script>
+    <script>
+        let login = localStorage.getItem('login');
+        let span = document.getElementById('loginSpan');
+        span.textContent = login;
+    </script>
 </body>
 </html>
