@@ -1,14 +1,15 @@
+/* Reset (подключён отдельно через reset.css) */
+
 /* Общие стили */
 body {
   margin: 0;
-  padding: 0;
   font-family: "Nunito Sans", sans-serif;
   background-color: #1B2431;
   color: #fff;
 }
 
-/* Верхняя панель */
-header {
+/* Шапка */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,31 +23,24 @@ header {
   font-weight: bold;
   color: #4880FF;
 }
-
-.logo-span {
-    color: #fff;
-}
-
-.search-container {
-  flex: 1;
-  margin: 0 30px;
-}
+.logo span { color: #fff; }
 
 .search-input {
+  flex: 1;
+  margin: 0 30px;
   padding: 10px;
+  width: 435px;
   border: none;
   border-radius: 5px;
-  color: #fff;
   background-color: #323D4E;
+  color: #fff;
   font-size: 16px;
-  width: 435px;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
 }
-
 .avatar {
   width: 30px;
   height: 30px;
@@ -55,82 +49,100 @@ header {
 }
 
 /* Основной контент */
-main {
+.content {
   padding: 30px;
 }
-
 h1 {
   margin-bottom: 30px;
-  color: #fff;
   font-size: 24px;
+  font-weight: 500;
+  color: #fff;
 }
 
 /* Фильтры */
 .filters-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 .filters {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  gap: 1px;
+  padding: 0 25px;
   background-color: #273142;
   border: 1px solid #313D4F;
-  border-radius: 14px;
+  border-radius: 10px;
 }
-
+.filter-icon {
+  padding: 13px 20px 0 0;
+}
 .filter-select {
   padding: 16px 25px;
   margin-right: 10px;
   border: none;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 5px;
   background-color: inherit;
   color: #fff;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
-
+.reset-btn {
+  background: none;
+  border: none;
+  padding-left: 30px;
+}
 .download-btn {
-  font-weight: 800;
-  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 15px 25px;
   background-color: #4880FF;
   border: none;
   border-radius: 14px;
   color: #fff;
-  font-size: 1rem;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
 }
-/* Таблица с файлами */
+
+/* Таблица */
 .files-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   color: #fff;
-}
-.table-header {
-    border-radius: 20px 20px 0 0;
+  opacity: 0.9;
+  font-size: 14px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .files-table th,
 .files-table td {
   padding: 15px;
   text-align: left;
-  border-bottom: 0.4px solid #979797;
+  border-bottom: 0.4px solid rgba(151, 151, 151, 0.3);
 }
 
 .files-table th {
   background-color: #313D4F;
-  font-weight: bold;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
-.files-table td {
-  background-color: #273142;
+.sort-active {
+  font-weight: 600;
 }
 
-.file-checkbox {
-  margin-right: 10px;
+.bold {
+  font-weight: 600;
+}
+
+/* Убираем нижнюю границу у последней строки */
+.files-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 /* Пагинация */
@@ -159,39 +171,91 @@ h1 {
   margin: 0 10px;
 }
 
+/* Обёртки */
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
+/* Боковое меню */
 .sidebar {
-    background-color: #273142;
-    color: white;
-    padding: 15px;
-    height: 100vh; /* Высота экрана */
-    box-sizing: border-box;
+  background-color: #273142;
+  color: white;
+  padding: 15px;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.sidebar ul li {
-    padding: 10px;
+.icon-list li {
+  padding: 10px;
 }
 
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
+.icon-list a {
+  color: white;
+  text-decoration: none;
+  display: block;
 }
 
-.sidebar ul li a:hover {
-    background-color: #555;
+.icon-list .active {
+  font-weight: bold;
 }
 
-.content {
+/* Общие элементы формы */
+.select-all,
+input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Пустая строка таблицы */
+.empty-row {
+  text-align: center;
+}
+
+.open-modal-btn {
+  padding: 12px 24px;
+  background-color: #4880FF;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Адаптивность (базовая) */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  
+  .sidebar {
     width: 100%;
-    padding: 20px;
+    order: 1;
+  }
+  
+  .content {
+    order: 2;
+    padding: 20px 15px;
+  }
+  
+  .filters-box {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
