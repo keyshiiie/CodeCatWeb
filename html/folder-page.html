@@ -18,8 +18,8 @@
         <div class="user-profile">
             <img src="/img/UserIcon.svg" alt="Аватар пользователя" class="avatar">
             <div class="user-info-row">
-                <p class="user-info">ФИО</p>
-                <p class="user-info">Роль</p>
+                <p class="user-info">Иванов Пётр Анатольевич</p>
+                <p class="user-info">Администратор</p>
             </div>
         </div>
     </header>
@@ -34,50 +34,79 @@
         <!-- Основной контент -->
         <main class="content">
             <h1 class="title">Папки</h1>
-
+            <div class="no-files-message" style="display: none;">
+                <h1 class="title">Файлов пока нет</h1>
+                <label>Администратор ещё не добавил файлы</label>
+            </div>
             <!-- Контейнер для карточек папок -->
             <div class="folders-grid">
                 <!-- Карточка папки -->
-                <div class="folder-card">
+                <a href="/html/folder-content-page.html" class="folder-card-link">
+                    <div class="folder-card">
                     <img src="/img/Folder.svg" alt="">
-                    <div class="folder-text">
-                        <h3>Документы</h3>
-                        <p>7 файлов</p>
+                        <div class="folder-text">
+                            <h3>Документы</h3>
+                            <p>7 файлов</p>
+                        </div>
                     </div>
-                </div>
-                <div class="folder-card">
-                    <img src="/img/Folder.svg" alt="">
-                    <div class="folder-text">
-                        <h3>Чеки</h3>
-                        <p>10 файлов</p>
+                </a>
+                <a href="/html/folder-content-page.html" class="folder-card-link">
+                    <div class="folder-card">
+                        <img src="/img/Folder.svg" alt="">
+                        <div class="folder-text">
+                            <h3>Чеки</h3>
+                            <p>10 файлов</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="folder-card">
-                    <img src="/img/Folder.svg" alt="">
-                    <div class="folder-text">
-                        <h3>Накладные</h3>
-                        <p>8 файлов</p>
+                </a>
+                <a href="/html/folder-content-page.html" class="folder-card-link">
+                    <div class="folder-card">
+                        <img src="/img/Folder.svg" alt="">
+                        <div class="folder-text">
+                            <h3>Накладные</h3>
+                            <p>8 файлов</p>
+                        </div>
                     </div>
-                </div>
-                <div class="folder-card">
-                    <img src="/img/Folder.svg" alt="">
-                    <div class="folder-text">
-                        <h3>Паспорта</h3>
-                        <p>3 файлов</p>
+                </a>
+                <a href="/html/folder-content-page.html" class="folder-card-link">
+                    <div class="folder-card">
+                        <img src="/img/Folder.svg" alt="">
+                        <div class="folder-text">
+                            <h3>Паспорта</h3>
+                            <p>3 файлов</p>
+                        </div>
                     </div>
-                </div>
-                <div class="folder-card">
-                    <img src="/img/Folder.svg" alt="">
-                    <div class="folder-text">
-                        <h3>Отчёт 2025</h3>
-                        <p>1 файлов</p>
+                </a>
+                <a href="/html/folder-content-page.html" class="folder-card-link">
+                    <div class="folder-card">
+                        <img src="/img/Folder.svg" alt="">
+                        <div class="folder-text">
+                            <h3>Отчёт 2025</h3>
+                            <p>1 файлов</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <!-- Кнопка должна быть видна админу -->
                 <button id="OpenModalBtn" class="open-modal-btn">
                     <img src="/img/PlusWhite.svg" alt="">Добавить папку
                 </button>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    document.getElementById('OpenModalBtn').addEventListener('click', function() {
+                    event.preventDefault(); // предотвращаем отправку формы
+
+                    const modal = document.getElementById('modal');
+                    modal.style.display = "block"; // Делаем модальное окно видимым
+                    });
+
+                    // Закрытие модального окна при клике вне его области
+                    window.addEventListener('click', function(event) {
+                    const modal = document.getElementById('modal');
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                    });
+                </script>
             </div>
         </main>
     </div>
@@ -94,4 +123,24 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const foldersGrid = document.querySelector('.folders-grid');
+        const noFoldersMessage = document.getElementById('no-files-message');
+
+        function updateFoldersVisibility() {
+            const folderCards = foldersGrid.querySelectorAll('.folder-card');
+            if (folderCards.length > 0) {
+            foldersGrid.style.display = 'grid';
+            noFoldersMessage.style.display = 'none';
+            } else {
+            foldersGrid.style.display = 'none';
+            noFoldersMessage.style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateFoldersVisibility);
+        // Если папки добавляются динамически — вызывайте updateFoldersVisibility() после добавления
+        });
+    </script>
+
 </body>

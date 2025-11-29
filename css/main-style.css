@@ -10,7 +10,9 @@ body {
 }
 
 
-
+a {
+  color: #fff;
+}
 /* Основной контент */
 .content {
   padding: 30px;
@@ -117,7 +119,9 @@ body {
 .files-table tbody tr:last-child td {
   border-bottom: none;
 }
-
+option {
+  background-color: #313D4F;
+}
 /* Пагинация */
 .pagination-row {
   display: flex;
@@ -205,18 +209,6 @@ input[type="checkbox"] {
 .open-modal-btn:hover {
   background-color: #3258b0;
   transition: 0.5s;
-}
-/* Пользователь */
-.user-info-row {
-  display: grid;
-  gap: 1px;
-}
-.user-info:first-child {
-  font-weight: 800;
-}
-.user-info:last-child {
-  font-weight: 400;
-  font-size: 12px;
 }
 /* Стили для модального окна */
 .modal {

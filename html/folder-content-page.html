@@ -18,8 +18,8 @@
         <div class="user-profile">
             <img src="/img/UserIcon.svg" alt="Аватар пользователя" class="avatar">
             <div class="user-info-row">
-                <p class="user-info">ФИО</p>
-                <p class="user-info">Роль</p>
+                <p class="user-info">Иванов Пётр Анатольевич</p>
+                <p class="user-info">Администратор</p>
             </div>
         </div>
         </header>
@@ -28,8 +28,8 @@
     <div class="wrapper">
         <aside class="sidebar">
             <ul class="icon-list">
-                <li><a href="/html/main-page.html" class="active"><img src="/img/Files.svg" alt=""></a></li>
-                <li><a href="/html/folder-page.html"><img src="/img/Folders.svg" alt=""></a></li>
+                <li><a href="/html/main-page.html"><img src="/img/Files.svg" alt=""></a></li>
+                <li><a href="/html/folder-page.html" class="active"><img src="/img/Folders.svg" alt=""></a></li>
                 <li><a href="/html/login-page.html"><img src="/img/ArrowSquareLeft.svg" alt=""></a></li>
             </ul>
         </aside>
@@ -46,16 +46,31 @@
                 <div class="filters">
                     <img src="/img/filter.svg" alt="" class="filter-icon">
                     <select name="sender" id="sender" class="filter-select">
-                        <option value="">Отправитель</option>
+                        <option value="" disabled selected>Отправитель</option>
+                        <option>979 Immanuel Ferry</option>
+                        <option>8587 Frida Ports</option>
                     </select>
                     <select name="date" id="date" class="filter-select">
-                        <option value="">Дата</option>
+                        <option value="" disabled selected>Дата</option>
+                        <option>Недавно добавленные</option>
+                        <option>Давно добавленные</option>
+                        <option>Выбрать дату</option>
                     </select>
                     <select name="format" id="format" class="filter-select">
-                        <option value="">Формат</option>
+                        <option value="" disabled selected>Формат</option>
+                        <option>DOCX</option>
+                        <option>TXT</option>
+                        <option>XLS</option>
+                        <option>PNG</option>
+                        <option>JPEG</option>
                     </select>
                     <select name="type" id="type" class="filter-select">
-                        <option value="">Тип</option>
+                        <option value="" disabled selected>Тип</option>
+                        <option>Документ</option>
+                        <option>Чек</option>
+                        <option>Отчёт</option>
+                        <option>Паспорт</option>
+                        <option>Протокол</option>
                     </select>
                     <button type="button" class="reset-btn">
                         <img src="/img/Path.svg" alt="Сбросить">
@@ -91,15 +106,15 @@
                         <td>979 Immanuel Ferry</td>
                         <td>27.11.2025</td>
                         <td>DOCS</td>
-                        <td>Договор, Чек</td>
+                        <td>Договор</td>
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td>Rosie Pearson</td>
-                        <td>979 Immanuel Ferry</td>
+                        <td>Darrell Caldwell</td>
+                        <td>8587 Frida Ports</td>
                         <td>27.11.2025</td>
-                        <td>DOCS</td>
-                        <td>Договор, Чек</td>
+                        <td>XLS</td>
+                        <td>Отчёт</td>
                     </tr>
                 </tbody>
                 </table>
@@ -116,13 +131,13 @@
                     document.getElementById('OpenModalBtn').addEventListener('click', function() {
                     event.preventDefault(); // предотвращаем отправку формы
 
-                    const modal = document.getElementById('MyModal');
+                    const modal = document.getElementById('modal');
                     modal.style.display = "block"; // Делаем модальное окно видимым
                     });
 
                     // Закрытие модального окна при клике вне его области
                     window.addEventListener('click', function(event) {
-                    const modal = document.getElementById('MyModal');
+                    const modal = document.getElementById('modal');
                     if (event.target == modal) {
                         modal.style.display = "none";
                     }
@@ -153,9 +168,12 @@
                     <div class="input-group">
                         <label class="label">Отправитель</label>
                         <select class="input combo-box">
-                            <option>Выберите отправителя</option>
+                            <option value="" disabled selected>Выберите отправителя</option>
+                            <option>979 Immanuel Ferry</option>
+                            <option>8587 Frida Ports</option>
                         </select>
                     </div>
+
                     <button class="btn add-file"><img src="/img/UploadSimple.svg" alt=""> Добавить файл</button>
                 </div>
 
@@ -163,7 +181,12 @@
                     <div class="input-group">
                         <label class="label">Тип документа</label>
                         <select class="input combo-box">
-                            <option>Выберите тип</option>
+                            <option value="" disabled selected>Выберите тип документа</option>
+                            <option>Чек</option>
+                            <option>Документ</option>
+                            <option>Отчёт</option>
+                            <option>Паспорт</option>
+                            <option>Квитанция</option>
                         </select>
                     </div>
                     <div class="input-group">
