@@ -91,6 +91,9 @@ a {
   transition: 0.5s;
 }
 /* Таблица */
+.bold-th {
+  font-weight: 800;
+}
 .files-table {
   width: 100%;
   border-collapse: separate;
@@ -152,8 +155,16 @@ option {
   opacity: 60%;
 }
 
+.prev-btn:disabled,
+.next-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #313D4F;
+}
+
 .prev-btn,
 .next-btn {
+  /* Сохраняем существующие стили */
   padding: 10px 15px;
   background-color: #273142;
   border: none;
@@ -162,6 +173,13 @@ option {
   cursor: pointer;
   margin: 0 5px;
 }
+
+.prev-btn:hover:not(:disabled),
+.next-btn:hover:not(:disabled) {
+  background-color: #4880FF;
+  transition: 0.5s;
+}
+
 .prev-btn:hover , .next-btn:hover {
   background-color: #4880FF;
   transition: 0.5s;
@@ -228,6 +246,7 @@ input[type="checkbox"] {
   margin: 15% auto;
   padding: 30px;
   width: 54%;
+  height: 57%;
   border-radius: 14px;
   border: 1px solid #CFCFCF1D;
 }
@@ -362,5 +381,23 @@ button.save:hover {
   font-weight: 500;
   color: #fff;
 }
-
+/* Модальное окно подтверждение выхода */
+#logoutModal .modal-content{
+  width: 40%;
+  height: 31%;
+}
+#logoutModal p{
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+}
+.btn.btn-danger {
+  background-color: #4880FF;
+}
+.btn.btn-secondary {
+  background-color: #1B2431;
+}
 
