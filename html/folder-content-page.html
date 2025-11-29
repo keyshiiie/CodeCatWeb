@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все файлы</title>
+    <title>Содержимое папки</title>
     <link rel="stylesheet" href="/css/main-style.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/menu-style.css">
+    <link rel="stylesheet" href="/css/folder-content-style.css">
 </head>
 <body>
     <header class="header">
@@ -34,7 +35,12 @@
         </aside>
 
         <main class="content">
-            <h1 class="title">Все файлы</h1>
+            <div class="nav-items">
+                <h1 class="title">Папки</h1>
+                <div class="swap-left"><img src="/img/SwapLeft.svg" alt=""></div>
+                <h1 class="title">Новая папка</h1>
+            </div>
+            
 
             <div class="filters-box">
                 <div class="filters">
@@ -125,7 +131,7 @@
 
                 <!-- Пагинация -->
                 <div class="pagination-row">
-                    <span id="pageInfo">Страница 1/1. Результатов поиска: 1</span>
+                    <span id="pageInfo">Страница 1/1. Результатов поиска: 2</span>
                     <div class="pagination">
                         <button class="prev-btn" aria-label="Предыдущая страница">←</button>
                         <div class="page-numbers">1</div>

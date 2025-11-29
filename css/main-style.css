@@ -188,17 +188,22 @@ input[type="checkbox"] {
   background-color: #273142;
   border-radius: 0 0 10px 10px;
 }
-
 .open-modal-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 70px;
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #4880FF;
+  padding: 15px 25px;
+  border-radius: 14px;
+  color: #FFFFFF;
+  background-color: #4880FF;
   font-weight: 600;
   margin: 0 auto;
 }
 .open-modal-btn:hover {
-  color: #3258b0;
+  background-color: #3258b0;
   transition: 0.5s;
 }
 /* Пользователь */
